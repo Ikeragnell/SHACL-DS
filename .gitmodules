@@ -1,0 +1,3 @@
+[submodule "src/dotNetRDF"]
+	path = src/dotNetRDF
+	url = https://github.com/Ikeragnell/dotnetrdf.git
