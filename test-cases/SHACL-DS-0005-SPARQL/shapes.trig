@@ -1,0 +1,125 @@
+@prefix ex: <http://example.org/> .
+@prefix shds: <http://www.w3.org/ns/shacl-dataset#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+
+ex:shapeGraphSPARQL shds:targetGraph shds:default.
+# ex:shapeGraphSPARQL shds:targetGraphExclude shds:goodPersonGraph.
+# ex:shapeGraphSPARQL shds:targetGraphCombination [shds:or (shds:all)].
+# ex:shapeGraphSPARQL {
+
+# ex: sh:declare [
+# 		sh:prefix "ex" ;
+# 		sh:namespace "http://example.org/"^^xsd:anyURI ;
+# 	] ;
+
+# 	sh:declare [
+# 		sh:prefix "foaf" ;
+# 		sh:namespace "http://xmlns.com/foaf/0.1/"^^xsd:anyURI ;
+# 	] ;
+# .
+# ex:knowsGoodPersonShape
+# 	a sh:NodeShape ;
+# 	sh:targetClass foaf:Person ;
+# 	sh:sparql [
+# 		a sh:SPARQLConstraint ; 
+# 		sh:prefixes ex: ;
+# 		sh:select """
+# 			SELECT DISTINCT $this
+# 			WHERE {
+# 				$this a foaf:Person ;
+# 					foaf:knows ?someone .
+
+# 				FILTER NOT EXISTS {
+# 					GRAPH ex:goodPersonGraph {
+# 						?goodPerson a foaf:Person .
+# 					}
+# 					$this foaf:knows ?goodPerson .
+# 				}
+# 			}
+# 			""" ;
+# 	] .
+# }
+ex:shapeGraphSPARQL {
+
+ex: sh:declare [
+		sh:prefix "ex" ;
+		sh:namespace "http://example.org/"^^xsd:anyURI ;
+	] ;
+
+	sh:declare [
+		sh:prefix "foaf" ;
+		sh:namespace "http://xmlns.com/foaf/0.1/"^^xsd:anyURI ;
+	] ;
+.
+
+ex:knowsGoodPersonShape
+	rdf:type sh:NodeShape ;
+	sh:targetNode ex:Alice ;
+	ex:goodPersonGraphName ex:goodPersonGraph;
+.
+
+ex:knowsGoodPersonComponent
+  a sh:ConstraintComponent ;
+  sh:parameter [
+      sh:path ex:goodPersonGraphName ;
+	  sh:name "good person graph name";
+    ] ;
+  sh:validator [
+		a sh:SPARQLAskValidator ;
+		sh:prefixes ex:;
+		sh:ask """
+			ASK {
+				$this a foaf:Person ;
+					foaf:knows ?someone .
+
+				FILTER EXISTS {
+					GRAPH $goodPersonGraphName {
+						?someone a foaf:Person .
+					}
+				}
+			}
+			""" ;
+  	]
+	.
+}
+
+# ex:shapeGraphSPARQL2 shds:targetGraphCombination [shds:or (shds:all)].
+# ex:shapeGraphSPARQL2 {
+
+# ex: sh:declare [
+# 		sh:prefix "ex" ;
+# 		sh:namespace "http://example.org/"^^xsd:anyURI ;
+# 	] ;
+
+# 	sh:declare [
+# 		sh:prefix "foaf" ;
+# 		sh:namespace "http://xmlns.com/foaf/0.1/"^^xsd:anyURI ;
+# 	] ;
+# .
+# ex:knowsGoodPersonShape
+# 	a sh:NodeShape ;
+# 	sh:targetClass foaf:Person ;
+# 	sh:sparql [
+# 		a sh:SPARQLConstraint ; 
+# 		sh:prefixes ex: ;
+# 		sh:select """
+# 			SELECT DISTINCT $this
+# 			WHERE {
+# 				$this a foaf:Person ;
+# 					foaf:knows ?someone .
+
+# 				FILTER NOT EXISTS {
+# 					GRAPH ex:goodPersonGraph {
+# 						?goodPerson a foaf:Person .
+# 					}
+# 					$this foaf:knows ?goodPerson .
+# 				}
+# 			}
+# 			""" ;
+# 	] .
+# }
+

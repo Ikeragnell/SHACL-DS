@@ -1,0 +1,26 @@
+@prefix ex: <http://example.org/> .
+@prefix shds: <http://www.w3.org/ns/shacl-dataset#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:shapeGraphSingleTarget1 shds:targetGraph ex:dataGraph1.
+ex:shapeGraphSingleTarget1 {
+ex:PersonShape
+    a sh:NodeShape ;
+    sh:targetClass foaf:Person ;    
+    sh:property [                 
+        sh:path foaf:knows ;
+        sh:minCount 1 ;
+    ] ;
+}
+
+ex:shapeGraphSingleTarget2 {
+ex:shapeGraphSingleTarget2 shds:targetGraph ex:dataGraph2.
+ex:PersonShape
+    a sh:NodeShape ;
+    sh:targetClass foaf:Person ;    
+    sh:property [                 
+        sh:path foaf:knows ;
+        sh:minCount 1 ;
+    ] ;
+}

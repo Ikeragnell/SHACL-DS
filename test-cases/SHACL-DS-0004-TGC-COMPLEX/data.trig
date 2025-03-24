@@ -1,0 +1,29 @@
+@prefix ex: <http://example.org/> .
+@prefix shds: <http://www.w3.org/ns/shacl-dataset#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:Alice a foaf:Person.
+
+ex:dataGraph1 {
+    ex:Alice a foaf:Person.
+    ex:Alice foaf:knows ex:Zach.
+
+    ex:Bob a foaf:Person.
+
+    ex:Charlie a foaf:Person.
+}
+
+ex:dataGraph2 {
+    ex:Alice a foaf:Person.
+    ex:Alice foaf:knows ex:Zach.
+
+    ex:Bob foaf:knows ex:Zach.
+
+    ex:Charlie a foaf:Person.
+}
+
+ex:dataGraph3 {
+    ex:Alice foaf:knows ex:Zach.
+}
+

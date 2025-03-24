@@ -1,0 +1,46 @@
+@prefix ex: <http://example.org/> .
+@prefix shx: <http://www.w3.org/ns/shacl-x#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:shapeGraph1 shx:targetGraphCombination [
+    shx:or ( [shx:and (ex:dataGraph1 ex:dataGraph2)] ex:dataGraph3);
+].
+
+ex:shapeGraph2 shx:targetGraphCombination [
+    shx:not ( [shx:or (shx:all)] ex:dataGraph2);
+].
+
+ex:shapeGraph3 shx:targetGraphCombination [
+    shx:or (shx:default ex:dataGraph3);
+].
+
+ex:shapeGraph1 {
+ex:PersonShape
+    a sh:NodeShape ;
+    sh:targetClass foaf:Person ;    
+    sh:property [                 
+        sh:path foaf:knows ;
+        sh:minCount 1 ;
+    ] ;
+}
+
+ex:shapeGraph2 {
+ex:PersonShape
+    a sh:NodeShape ;
+    sh:targetClass foaf:Person ;    
+    sh:property [                 
+        sh:path foaf:knows ;
+        sh:minCount 1 ;
+    ] ;
+}
+
+ex:shapeGraph3 {
+ex:PersonShape
+    a sh:NodeShape ;
+    sh:targetClass foaf:Person ;    
+    sh:property [                 
+        sh:path foaf:knows ;
+        sh:minCount 1 ;
+    ] ;
+}

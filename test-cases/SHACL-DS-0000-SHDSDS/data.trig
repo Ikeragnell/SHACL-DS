@@ -1,0 +1,27 @@
+@prefix ex: <http://example.org/> .
+@prefix shds: <http://www.w3.org/ns/shacl-dataset#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:CombinationMultipleOperator{
+    ex:CombinationMultipleOperator shds:targetGraphCombination [
+        shds:or ( ex:dataGraph1 ex:dataGraph2);
+        shds:and ( ex:dataGraph1 ex:dataGraph2);
+    ].
+}
+
+ex:CombinationMinusNot2Operand{
+    ex:CombinationMinusNot2Operand shds:targetGraphCombination [
+        shds:minus (ex:dataGraph1);
+    ].
+}
+
+ex:CombinationOperandNotCombination{
+    ex:CombinationOperandNotCombination shds:targetGraphCombination [
+        shds:or (ex:dataGraph1 []);
+    ].
+}
+
+ex:CombinationOperandNotCombinationNested shds:targetGraphCombination [
+    shds:or ([shds:or ( ex:dataGraph1 ex:dataGraph2); shds:or ( ex:dataGraph3 ex:dataGraph4);] ex:dataGraph3);
+].
