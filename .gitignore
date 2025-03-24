@@ -1,0 +1,8 @@
+.vscode/
+*.tmp
+example/bin/
+example/obj/
+src/dotNetRDF/bin/
+src/dotNetRDF/obj/
+*.log
+

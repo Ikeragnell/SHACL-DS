@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\dotnetrdf\Libraries\dotNetRdf.Shacl\dotNetRdf.Shacl.csproj" />
+    <ProjectReference Include="..\src\dotnetrdf\Libraries\dotNetRdf.Shacl\dotNetRdf.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- <PackageReference Include="dotNetRdf.Core" Version="3.2.1" /> -->
+    <PackageReference Include="dotNetRdf.Query.FullText" Version="3.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="..\test-cases">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
