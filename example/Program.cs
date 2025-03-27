@@ -21,9 +21,8 @@ class Program
         // Iterate through each test case directory
         foreach (string testCaseDir in Directory.GetDirectories(testCasesDir))
         {
-            Console.WriteLine($"Processing test case: {testCaseDir}");
-            // if (testCaseDir != "./test-cases\\SHACL-X-0004-TGC-COMPLEX")
-            //     continue;
+            if (testCaseDir != "../test-cases\\SHACL-DS-0005-SPARQL-COMBINATION")
+                continue;
             try
             {
                 // Paths for data and shapes files
@@ -50,11 +49,12 @@ class Program
                 ShapesDataset shapesDS = new ShapesDataset(shapeStore);
 
                 // Perform validation
+                var targetMap = shapesDS.GetTargetGraphs(dataDS).ToList();
                 Report report = shapesDS.Validate(dataDS);
 
                 // Save the validation report
                 CompressingTurtleWriter writer = new CompressingTurtleWriter();
-                writer.Save(report.Normalised, reportFile);
+                writer.Save(report.Graph, reportFile);
 
                 Console.WriteLine($"Report generated: {reportFile}");
 

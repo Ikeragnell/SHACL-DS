@@ -23,9 +23,9 @@ ex:shapesGraphShape {
         sh:property [
             sh:path [
                 sh:zeroOrMorePath ( [sh:alternativePath (shds:or shds:and shds:minus)] [ sh:zeroOrMorePath rdf:rest ] rdf:first );
-            ]
+            ] ;
+            sh:node ex:targetGraphCombinationShape;
         ] ;
-        sh:node ex:targetGraphCombinationShape;
     .
 
     ex:oneCombinationOperatorShape
@@ -61,24 +61,32 @@ ex:shapesGraphShape {
 
         sh:property [
             sh:path shds:minus;
-            sh:node shsh:PathListWithAtLeast2Members;
+            sh:node ex:ListWithExactly2Members;
         ];
 
         sh:not [
-            sh:property [
-                sh:path (sh:minus rdf:first ) ;
-                sh:in ( shds:default shds:named shds:all ) ;
-            ]
+                sh:path (shds:minus rdf:first ) ;
+                sh:minCount 1;
+                sh:in ( shds:named shds:all ) ;
         ];
 
         sh:not [
-            sh:property [
-                sh:path (sh:minus rdf:rest rdf:first ) ;
-                sh:in ( shds:default shds:named shds:all ) ;
-            ]
+            sh:path (shds:minus rdf:rest rdf:first ) ;
+            sh:minCount 1;
+            sh:in ( shds:named shds:all ) ;
         ];
 
     .
+
+
+    ex:ListWithExactly2Members
+        a sh:NodeShape ;
+        sh:node shsh:ListShape ;
+        sh:property [
+            sh:path [ sh:oneOrMorePath rdf:rest ] ;
+            sh:minCount 2 ; 
+            sh:maxCount 2 ;
+        ] .
 
     shsh:ListShape
         a sh:NodeShape ;
@@ -120,12 +128,4 @@ ex:shapesGraphShape {
                         sh:minCount 1 ;
                     ] ;
                 ] ) .
-
-    shsh:PathListWithAtLeast2Members
-        a sh:NodeShape ;
-        sh:node shsh:ListShape ;
-        sh:property [
-            sh:path [ sh:oneOrMorePath rdf:rest ] ;
-            sh:minCount 2 ;    # 1 other list node plus rdf:nil
-        ] .
 }

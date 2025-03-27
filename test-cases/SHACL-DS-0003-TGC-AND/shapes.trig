@@ -7,10 +7,6 @@ ex:shapeGraphAnd1 shds:targetGraphCombination [
     shds:and (ex:dataGraph1 ex:dataGraph2);
 ].
 
-ex:shapeGraphAnd2 shds:targetGraphCombination [
-    shds:and (ex:dataGraph1 ex:dataGraph4);
-].
-
 ex:shapeGraphAnd1 {
 ex:PersonShape
     a sh:NodeShape ;
@@ -22,6 +18,10 @@ ex:PersonShape
 }
 
 ex:shapeGraphAnd2 {
+ex:shapeGraphAnd2 shds:targetGraphCombination [
+    shds:and (ex:dataGraph1 ex:dataGraph4);
+].
+
 ex:PersonShape
     a sh:NodeShape ;
     sh:targetClass foaf:Person ;    

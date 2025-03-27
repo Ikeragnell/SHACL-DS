@@ -43,6 +43,8 @@ ex:shapeGraphSPARQL shds:targetGraph shds:default.
 # 			""" ;
 # 	] .
 # }
+
+
 ex:shapeGraphSPARQL {
 
 ex: sh:declare [
@@ -75,7 +77,6 @@ ex:knowsGoodPersonComponent
 			ASK {
 				$this a foaf:Person ;
 					foaf:knows ?someone .
-
 				FILTER EXISTS {
 					GRAPH $goodPersonGraphName {
 						?someone a foaf:Person .

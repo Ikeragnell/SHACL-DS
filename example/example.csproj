@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\src\dotnetrdf\Libraries\dotNetRdf.Shacl\dotNetRdf.Shacl.csproj" />
-    <ProjectReference Include="..\src\dotnetrdf\Libraries\dotNetRdf.Shacl\dotNetRdf.Core.csproj" />
+    <ProjectReference Include="..\src\dotnetrdf\Libraries\dotNetRdf.Core\dotNetRdf.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

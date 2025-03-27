@@ -2,13 +2,15 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
-_:autos1 a <http://www.w3.org/ns/shacl#ValidationReport>;
-         <http://www.w3.org/ns/shacl#conforms> false;
-         <http://www.w3.org/ns/shacl#result> [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
-                                              <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
-                                              <http://www.w3.org/ns/shacl#focusNode> <http://example.org/Bob> ; 
-                                              <http://www.w3.org/ns/shacl#sourceShape> [] ; 
-                                              <http://www.w3.org/ns/shacl#resultMessage> "There should be at least 1 value(s)." ; 
-                                              <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#MinCountConstraintComponent> ; 
-                                              <http://www.w3.org/ns/shacl#resultPath> <http://xmlns.com/foaf/0.1/knows> ; 
-                                              <http://www.w3.org/ns/shacl-dataset#sourceShapeGraph> <http://example.org/shapeGraphAnd2>].
+_:autos507 a <http://www.w3.org/ns/shacl#ValidationReport>;
+           <http://www.w3.org/ns/shacl#conforms> false;
+           <http://www.w3.org/ns/shacl#result> [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
+                                                <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
+                                                <http://www.w3.org/ns/shacl#focusNode> <http://example.org/Bob> ; 
+                                                <http://www.w3.org/ns/shacl#sourceShape> [] ; 
+                                                <http://www.w3.org/ns/shacl#resultMessage> "There should be at least 1 value(s)." ; 
+                                                <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#MinCountConstraintComponent> ; 
+                                                <http://www.w3.org/ns/shacl#resultPath> <http://xmlns.com/foaf/0.1/knows> ; 
+                                                <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphAnd2> ; 
+                                                <http://www.w3.org/ns/shacl-dataset#focusGraph> [<http://www.w3.org/ns/shacl-dataset#and> (<http://example.org/dataGraph1>
+                                                                                                                                           <http://example.org/dataGraph4>)]].
