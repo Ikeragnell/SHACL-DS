@@ -12,7 +12,7 @@ SHACL-DS is an extension to SHACL (Shapes Constraint Language) designed to enabl
 - SPARQL-based constraints for dataset, a specification of the behavior of SHACL’s SPARQL-based constraint applied to a dataset.
 ### Specification
 
-The full specification is available in the `docs/` folder.
+TODO: The full specification is available in the `docs/` folder.
 
 ### Example Program
 
