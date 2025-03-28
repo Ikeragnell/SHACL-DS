@@ -9,5 +9,9 @@
 - SHACL-DS-0003-TGC-MINUS: difference between graphs as target
 - SHACL-DS-0003-TGC-OR: union of graphs as target
 - SHACL-DS-0004-TGC-COMPLEX: nested graph combinations for complex targeting
-- SHACL-DS-0005-SPARQL: dataset-level SPARQL-based constraints testing
+- SHACL-DS-0005-SPARQL-COMBINATION: dataset-level SPARQL-based constraints on a combination of graphs
+- SHACL-DS-0005-SPARQL-DEFAULT: dataset-level SPARQL-based constraints on the default graph
+- SHACL-DS-0005-SPARQL-NAMED: dataset-level SPARQL-based constraints on each named graphs
+- SHACL-DS-0006-SPARQL-ASK: dataset-level SPARQL-based constraint components with ASK validator
+- SHACL-DS-0006-SPARQL-SELECT: dataset-level SPARQL-based constraint components with SELECT validator
 

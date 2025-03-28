@@ -30,6 +30,7 @@ ex:dataGraph2 {
 
     ex:David a foaf:Person.
     ex:David foaf:knows ex:Zach.
+    ex:David foaf:knows ex:Yara.
 
     ex:Zach a foaf:Person.
     ex:Yara a foaf:Person.

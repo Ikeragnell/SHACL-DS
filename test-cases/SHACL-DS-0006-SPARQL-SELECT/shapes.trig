@@ -1,0 +1,104 @@
+@prefix ex: <http://example.org/> .
+@prefix shds: <http://www.w3.org/ns/shacl-dataset#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+
+ex:shapeGraphNodeSELECT shds:targetGraph shds:default.
+ex:shapeGraphNodeSELECT {
+
+ex: sh:declare [
+		sh:prefix "ex" ;
+		sh:namespace "http://example.org/"^^xsd:anyURI ;
+	] ;
+
+	sh:declare [
+		sh:prefix "foaf" ;
+		sh:namespace "http://xmlns.com/foaf/0.1/"^^xsd:anyURI ;
+	] ;
+.
+
+ex:knowsGoodPersonShape
+	rdf:type sh:NodeShape ;
+	sh:targetClass foaf:Person ;
+	ex:goodPersonGraphName ex:goodPersonGraph;
+.
+
+ex:knowsGoodPersonComponent
+  a sh:ConstraintComponent ;
+  sh:parameter [
+      sh:path ex:goodPersonGraphName ;
+	  sh:name "good person graph name";
+    ] ;
+  sh:nodeValidator  [
+		a sh:SPARQLSelectValidator  ;
+		sh:prefixes ex:;
+		sh:select """
+			SELECT DISTINCT $this
+			WHERE {
+				$this a foaf:Person ;
+					foaf:knows ?someone .
+
+				FILTER NOT EXISTS {
+					GRAPH $goodPersonGraphName {
+						?goodPerson a foaf:Person .
+					}
+					$this foaf:knows ?goodPerson .
+				}
+			}
+			""" ;
+  	]	
+.
+}
+
+ex:shapeGraphPropertySELECT shds:targetGraph shds:default.
+ex:shapeGraphPropertySELECT {
+
+ex: sh:declare [
+		sh:prefix "ex" ;
+		sh:namespace "http://example.org/"^^xsd:anyURI ;
+	] ;
+
+	sh:declare [
+		sh:prefix "foaf" ;
+		sh:namespace "http://xmlns.com/foaf/0.1/"^^xsd:anyURI ;
+	] ;
+.
+
+ex:knowsGoodPersonShape
+	rdf:type sh:NodeShape ;
+	sh:targetClass foaf:Person ;
+	sh:property [
+		sh:path foaf:knows;
+		ex:goodPersonGraphName ex:goodPersonGraph;
+	]
+.
+
+ex:knowsGoodPersonComponent
+  a sh:ConstraintComponent ;
+  sh:parameter [
+      sh:path ex:goodPersonGraphName ;
+	  sh:name "good person graph name";
+    ] ;
+  sh:propertyValidator   [
+		a sh:SPARQLSelectValidator  ;
+		sh:prefixes ex:;
+		sh:select """
+			SELECT DISTINCT $this
+			WHERE {
+				$this a foaf:Person.
+				$this $PATH ?someone .
+
+				FILTER NOT EXISTS {
+					GRAPH $goodPersonGraphName {
+						?goodPerson a foaf:Person .
+					}
+					$this $PATH ?goodPerson .
+				}
+			}
+			""" ;
+  	]	
+.
+}
