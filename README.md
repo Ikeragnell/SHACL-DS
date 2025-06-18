@@ -23,7 +23,7 @@ A simple example program demonstrating the usage of SHACL-DS is located in the `
 1. **Clone the repository:**
 
 ```
-git clone https://github.com/YourUsername/SHACL-DS.git
+git clone https://github.com/Ikeragnell/SHACL-DS.git
 ```
 
 2. **Initialize and update the dotNetRDF submodule:**
