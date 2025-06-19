@@ -12,7 +12,12 @@ Ensure you have the [.NET SDK](https://dotnet.microsoft.com/download) installed 
 
 1. Open a terminal and navigate to this `example` folder.
 
-2. Run the example using:
+2. Make sure the example.csproj file is configured to target the correct SDK version. It should include:
+```xml
+   <TargetFramework>net8.0</TargetFramework>
+```
+
+3. Run the example using:
 
 ```bash
    dotnet run

@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\src\dotnetrdf\Libraries\dotNetRdf.Shacl\dotNetRdf.Shacl.csproj" />
-    <ProjectReference Include="..\src\dotnetrdf\Libraries\dotNetRdf.Core\dotNetRdf.Core.csproj" />
+    <ProjectReference Include="..\src\dotnetRDF\Libraries\dotNetRdf.Shacl\dotNetRdf.Shacl.csproj" />
+    <ProjectReference Include="..\src\dotnetRDF\Libraries\dotNetRdf.Core\dotNetRdf.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
