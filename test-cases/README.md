@@ -14,4 +14,5 @@
 - SHACL-DS-0005-SPARQL-NAMED: dataset-level SPARQL-based constraints on each named graphs
 - SHACL-DS-0006-SPARQL-ASK: dataset-level SPARQL-based constraint components with ASK validator
 - SHACL-DS-0006-SPARQL-SELECT: dataset-level SPARQL-based constraint components with SELECT validator
+- SHACL-DS-0007-TG-PATTERN: data graphs that follow a regex pattern and exclusion
 

@@ -1,0 +1,6 @@
+@prefix ont: <http://kg.socialsecurity.be/ont/dmfa#> .
+ont:Occupation2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://kg.socialsecurity.be/ont/dmfa#Occupation>.
+ont:Occupation2 <http://kg.socialsecurity.be/ont/dmfa#PositionCode> "31"^^<http://www.w3.org/2001/XMLSchema#integer>.
+
+<http://maliciousInput.be/PositionCode31> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://kg.socialsecurity.be/ont/annex9#PositionCode>.
+<http://maliciousInput.be/PositionCode31>  <http://kg.socialsecurity.be/ont/annex9#Code> "31"^^<http://www.w3.org/2001/XMLSchema#integer>.

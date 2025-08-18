@@ -1,0 +1,71 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ont: <http://kg.socialsecurity.be/ont/dmfa#> .
+@prefix an9: <http://kg.socialsecurity.be/ont/annex9#> .
+
+@prefix kg: <http://kg.socialsecurity.be/resource/shapes/> .
+@base <http://kg.socialsecurity.be/resource/shapes/> .
+
+@prefix shds: <http://www.w3.org/ns/shacl-dataset#> .
+@prefix ex: <http://example.com/> .
+
+
+kg:secureShapesGraph shds:targetGraph ex:UNTRUSTED.
+
+kg:secureShapesGraph{
+<>
+	sh:declare [
+		sh:prefix "ont" ;
+		sh:namespace "http://kg.socialsecurity.be/ont/dmfa#"^^xs:anyURI ;
+	] ;
+
+    sh:declare [
+        sh:prefix "an9" ;
+        sh:namespace "http://kg.socialsecurity.be/ont/annex9#"^^xs:anyURI ;
+    ] ;
+.
+
+
+kg:OccupationShape a sh:NodeShape ;
+    rdfs:comment "Property Shape for Occupation (90015)" ;
+    sh:targetClass ont:Occupation ;
+    sh:property kg:PositionCodeShape;
+
+    # This constraint is equivalent to the SPARQL constraint lines 49-61
+    # Not anymore if we can ensure provenance
+    # sh:property [
+    #     sh:message "Invalid code for a position, code does not exist" ;
+    #     sh:equals ont:PositionCode;
+    #     sh:path ( ont:PositionCode [sh:inversePath an9:Code] an9:Code);
+    # ] ;
+.
+
+kg:PositionCodeShape a sh:PropertyShape;
+    rdfs:comment "Property Shape for PositionCode (00057)" ;
+    sh:path ont:PositionCode;
+    sh:datatype xs:integer;
+    sh:maxCount 1 ;
+    sh:minLength 2 ;
+    sh:maxLength 2 ;
+    sh:minInclusive 0 ;
+    sh:maxInclusive 99 ;
+
+    sh:sparql [
+        sh:message "Invalid code for a position, code does not exist" ;
+        sh:prefixes <> ;
+        sh:select """
+            SELECT $this ?value 
+            WHERE {
+                $this $PATH ?value.
+                OPTIONAL{
+                    GRAPH <http://kg.socialsecurity.be/ont/annex9#>{
+                        ?p a an9:PositionCode ; an9:Code ?value.
+                    }
+                }
+                FILTER(!BOUND(?p))
+            }""" ;
+    ] ;
+.
+}

@@ -76,6 +76,36 @@ ex:shapesGraph1 {
         sh:class ex:Person .
 }
 ```
+
+### Target Graph Pattern
+
+The `shds:targetGraphPattern` predicate allows targeting graphs using regular expression patterns. The pattern is a string literal that follows the regular expression defined in XQuery 1.0 and XPath 2.0 Functions and Operators [1]. 
+
+Moreover, the `shds:targetGraphPatternExclude` predicate allows excluding graphs using regular expression patterns. 
+
+#### Example
+
+The following example declares that the shapes graph `ex:shapesGraph1` targets all graphs whose names starts with `data` and exclude those which end with `_good`. The shape `ex:AliceIsPersonShape` specifies that `ex:Alice` must be an instance of `foaf:Person` in each targeted graph.
+
+
+```trig
+ex:shapesGraph1 shds:targetGraphPattern "data.*" .
+ex:shapesGraph1 shds:targetGraphPatternExclude ".*_good" .
+
+ex:shapesGraph1 {
+    ex:AliceIsPersonShape
+        sh:targetNode ex:Alice ;    
+        sh:class ex:Person .
+}
+```
+
+### Processing Order
+The SHACL-DS processor applies targeting in a two-phase approach:
+1. **Inclusion Phase**: All graphs targeted by either `shds:targetGraph` or `shds:targetGraphPattern` are included in the target set
+2. **Exclusion Phase**: All graphs matching either `shds:targetGraphExclude` or `shds:targetGraphPatternExclude` are removed from the target set
+
+This means that exclusions are applied after all inclusions have been processed, regardless of which targeting mechanism was used for inclusion. 
+
 ## Target Graph Combination
 
 In addition to selecting existing graphs, SHACL-DS supports the definition of **target graph combinations** using set operations. This allows a shapes graph to validate a new graph constructed from multiple graphs.
