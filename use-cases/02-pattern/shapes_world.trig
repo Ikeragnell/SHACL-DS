@@ -1,0 +1,36 @@
+@prefix ex:   <http://example.org/> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix shds: <http://www.w3.org/ns/shacl-dataset#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:shapes_users {
+  ex:shapes_users shds:targetGraphPattern ".*users.*" .
+  ex:shapes_users shds:targetGraph shds:default .
+
+  ex:PersonMustKnow
+      a sh:NodeShape ;
+      sh:targetClass foaf:Person ;
+      sh:property [
+        sh:path foaf:knows ;
+        sh:minCount 1 ;
+        sh:message "Every foaf:Person must foaf:knows at least one node." ;
+      ] .
+}
+
+ex:shapes_cities {
+  ex:shapes_cities shds:targetGraphPattern ".*cities.*" .
+
+  ex:CityShape
+      a sh:NodeShape ;
+      sh:targetClass ex:City ;
+      sh:property [
+        sh:path ex:name ;
+        sh:minCount 1 ;
+        sh:message "City must have a name." ;
+      ] ;
+      sh:property [
+        sh:path ex:country ;
+        sh:minCount 1 ;
+        sh:message "City must have a country." ;
+      ] .
+}

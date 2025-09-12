@@ -44,7 +44,7 @@ internal static class Program
                 var shapesStore = LoadShapesDataset (options.ShapesPath!);
 
                 // Warning: shapes dataset has no named graphs (default graph only)
-                if (!shapesStore.Graphs.Any(g => g.BaseUri != null))
+                if (!shapesStore.Graphs.Any(g => g.Name != null))
                 {
                     Console.Error.WriteLine("[warning] SHACL-DS: shapes dataset has NO named graphs (e.g., loaded from .ttl/.nt).");
                     Console.Error.WriteLine("          In SHACL-DS, only named graphs actually validate data.");

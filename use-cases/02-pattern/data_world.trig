@@ -1,0 +1,43 @@
+@prefix ex:   <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:Alice a foaf:Person .
+ex:Alice foaf:knows ex:Zach .
+
+ex:Bob a foaf:Person .       # missing foaf:knows (→ violate)
+
+# --- Users graphs ---
+
+ex:users1_good {
+  ex:Charlie a foaf:Person ;
+             foaf:knows ex:Zach .
+
+  ex:David   a foaf:Person ;
+             foaf:knows ex:Eve .
+}
+
+ex:users2_bad {
+  ex:Eve   a foaf:Person .                     # missing foaf:knows (→ violate)
+  ex:Frank a foaf:Person ;
+           foaf:knows ex:Zach .
+}
+
+# --- Cities graphs ---
+
+ex:cities1_good {
+  ex:Liege    a ex:City ;
+              ex:name "Liège" ;
+              ex:country "Belgium" .
+
+  ex:Namur    a ex:City ;
+              ex:name "Namur" ;
+              ex:country "Belgium" .
+}
+
+ex:cities2_bad {
+  ex:Paris    a ex:City ;
+              ex:name "Paris" .               # missing ex:country (→ violate)
+
+  ex:Brussels a ex:City ;
+              ex:country "Belgium" .          # missing ex:name (→ violate)
+}
