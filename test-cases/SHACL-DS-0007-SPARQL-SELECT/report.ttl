@@ -2,9 +2,17 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
-_:autos1042 a <http://www.w3.org/ns/shacl#ValidationReport>;
+_:autos1180 a <http://www.w3.org/ns/shacl#ValidationReport>;
             <http://www.w3.org/ns/shacl#conforms> false;
             <http://www.w3.org/ns/shacl#result> [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
+                                                 <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
+                                                 <http://www.w3.org/ns/shacl#focusNode> <http://example.org/Bob> ; 
+                                                 <http://www.w3.org/ns/shacl#value> <http://example.org/Bob> ; 
+                                                 <http://www.w3.org/ns/shacl#sourceShape> <http://example.org/knowsGoodPersonShape> ; 
+                                                 <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://example.org/knowsGoodPersonComponent> ; 
+                                                 <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphNodeSELECT> ; 
+                                                 <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://www.w3.org/ns/shacl-dataset#default>],
+                                                [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
                                                  <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
                                                  <http://www.w3.org/ns/shacl#focusNode> <http://example.org/Bob> ; 
                                                  <http://www.w3.org/ns/shacl#value> <http://example.org/Yara> ; 
@@ -12,12 +20,4 @@ _:autos1042 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                  <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://example.org/knowsGoodPersonComponent> ; 
                                                  <http://www.w3.org/ns/shacl#resultPath> <http://xmlns.com/foaf/0.1/knows> ; 
                                                  <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphPropertySELECT> ; 
-                                                 <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://www.w3.org/ns/shacl-dataset#default>],
-                                                [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
-                                                 <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
-                                                 <http://www.w3.org/ns/shacl#focusNode> <http://example.org/Bob> ; 
-                                                 <http://www.w3.org/ns/shacl#value> <http://example.org/Bob> ; 
-                                                 <http://www.w3.org/ns/shacl#sourceShape> <http://example.org/knowsGoodPersonShape> ; 
-                                                 <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://example.org/knowsGoodPersonComponent> ; 
-                                                 <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphNodeSELECT> ; 
                                                  <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://www.w3.org/ns/shacl-dataset#default>].

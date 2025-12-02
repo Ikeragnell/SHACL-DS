@@ -6,5 +6,6 @@ src/dotNetRDF/bin/
 src/dotNetRDF/obj/
 src/SHACL-DS.cli/bin
 src/SHACL-DS.cli/obj
+TODO.txt
 *.log
 

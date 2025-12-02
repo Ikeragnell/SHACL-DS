@@ -63,13 +63,13 @@ The `shds:targetGraphExclude` predicate allows specific graphs to be excluded fr
 
 #### Example
 
-The following example declares that the shapes graph `ex:shapesGraph1` targets all named graphs in the data dataset that are neither `ex:datagraph1` nor `ex:datagraph1`. The shape `ex:AliceIsPersonShape` specifies that `ex:Alice` must be an instance of `foaf:Person` in each targeted graph.
+The following example declares that the shapes graph `ex:shapesGraph1` targets all named graphs in the data dataset that are neither `ex:dataGraph1` nor `ex:dataGraph1`. The shape `ex:AliceIsPersonShape` specifies that `ex:Alice` must be an instance of `foaf:Person` in each targeted graph.
 
 ```trig
 ex:shapesGraph1 
     shds:targetGraph shds:named; 
-    shds:targetGraphExclude ex:datagraph1; 
-    shds:targetGraphExclude ex:datagraph2.
+    shds:targetGraphExclude ex:dataGraph1; 
+    shds:targetGraphExclude ex:dataGraph2.
 ex:shapesGraph1 {
     ex:AliceIsPersonShape
         sh:targetNode ex:Alice ;    
@@ -120,7 +120,7 @@ These operators accept RDF lists of graph IRIs or other graph combinations. The 
 
 #### Example
 
-The following example declares that `ex:shapesGraph1` targets the union of all graphs minus the  `ex:datagraph1` named graph. For this graph combination, every person must know someone.
+The following example declares that `ex:shapesGraph1` targets the union of all graphs minus the  `ex:dataGraph1` named graph. For this graph combination, every person must know someone.
 
 ```trig
 ex:shapeGraph1 shds:targetGraphCombination [shds:minus ([shds:union (shds:all)] ex:dataGraph1);].
@@ -148,16 +148,9 @@ SHACL-DS does not define the behavior of the pre-bound variables `$shapesGraph` 
 
 To ensure **reusability** of constraints across focus graphs (whether named, default, or combinations), SHACL-DS applies a **dataset view transformation** before executing a SPARQL query:
 
-- **Default Graph Target**  
-  No transformation is performed. The dataset is used as-is.
+-The original default graph is stored in a named graph with IRI `shds:default` and the focus graph becomes the default graph.
 
-- **Named Graph Target**  
-  The named graph becomes the default graph. The original default graph is renamed to `shds:default`.
-
-- **Combination Target**  
-  The combined graph is treated as the default graph. The original default graph is preserved and renamed to `shds:default`.
-
-These transformations ensure that all SPARQL queries are written against the default graph context while still having access to the rest of the dataset structure through named graphs.
+This transformation ensures that all SPARQL queries are written against the default graph context while still having access to the rest of the dataset structure through named graphs.
 
 ### Example
 

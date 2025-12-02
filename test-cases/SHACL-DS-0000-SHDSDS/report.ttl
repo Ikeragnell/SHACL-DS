@@ -26,16 +26,6 @@ _:autos123 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                 <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://example.org/CombinationMultipleOperator>],
                                                [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
                                                 <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
-                                                <http://www.w3.org/ns/shacl#focusNode> [] ; 
-                                                <http://www.w3.org/ns/shacl#value> [] ; 
-                                                <http://www.w3.org/ns/shacl#sourceShape> _:autos20 ; 
-                                                <http://www.w3.org/ns/shacl#resultMessage> "Value must conform to the specified node shape." ; 
-                                                <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#NodeConstraintComponent> ; 
-                                                <http://www.w3.org/ns/shacl#resultPath> _:autos21 ; 
-                                                <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapesGraphShape> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://example.org/CombinationOperandNotCombination>],
-                                               [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
-                                                <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
                                                 <http://www.w3.org/ns/shacl#focusNode> _:autos6 ; 
                                                 <http://www.w3.org/ns/shacl#value> _:autos6 ; 
                                                 <http://www.w3.org/ns/shacl#sourceShape> _:autos20 ; 
@@ -43,4 +33,14 @@ _:autos123 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                 <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#NodeConstraintComponent> ; 
                                                 <http://www.w3.org/ns/shacl#resultPath> _:autos21 ; 
                                                 <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapesGraphShape> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://example.org/CombinationMinusNot2Operand>].
+                                                <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://example.org/CombinationMinusNot2Operand>],
+                                               [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
+                                                <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
+                                                <http://www.w3.org/ns/shacl#focusNode> [] ; 
+                                                <http://www.w3.org/ns/shacl#value> [] ; 
+                                                <http://www.w3.org/ns/shacl#sourceShape> _:autos20 ; 
+                                                <http://www.w3.org/ns/shacl#resultMessage> "Value must conform to the specified node shape." ; 
+                                                <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#NodeConstraintComponent> ; 
+                                                <http://www.w3.org/ns/shacl#resultPath> _:autos21 ; 
+                                                <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapesGraphShape> ; 
+                                                <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://example.org/CombinationOperandNotCombination>].

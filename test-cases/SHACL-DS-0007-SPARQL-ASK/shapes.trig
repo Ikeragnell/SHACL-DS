@@ -20,13 +20,13 @@ ex: sh:declare [
 	] ;
 .
 
-ex:knowsGoodPersonShape
+ex:knowsAtleastAPersonAndMustBeFromGoodPersonShape
 	rdf:type sh:NodeShape ;
 	sh:targetClass foaf:Person ;
 	ex:goodPersonGraphName ex:goodPersonGraph;
 .
 
-ex:knowsGoodPersonComponent
+ex:knowsAtleastAPersonAndMustBeFromGoodPersonShape
   a sh:ConstraintComponent ;
   sh:parameter [
       sh:path ex:goodPersonGraphName ;
@@ -43,6 +43,7 @@ ex:knowsGoodPersonComponent
 					GRAPH $goodPersonGraphName {
 						?someone a foaf:Person .
 					}
+					$this foaf:knows ?someone .
 				}
 			}
 			""" ;
