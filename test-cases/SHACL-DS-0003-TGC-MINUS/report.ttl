@@ -1,8 +1,8 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+﻿@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
-_:autos512 <http://www.w3.org/ns/shacl-dataset#minus> (<http://example.org/dataGraph1>
+_:autos512 <https://w3id.org/shacl-ds#minus> (<http://example.org/dataGraph1>
                                                        <http://example.org/dataGraph3>).
 _:autos574 a <http://www.w3.org/ns/shacl#ValidationReport>;
            <http://www.w3.org/ns/shacl#conforms> false;
@@ -13,8 +13,8 @@ _:autos574 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                 <http://www.w3.org/ns/shacl#resultMessage> "There should be at least 1 value(s)." ; 
                                                 <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#MinCountConstraintComponent> ; 
                                                 <http://www.w3.org/ns/shacl#resultPath> <http://xmlns.com/foaf/0.1/knows> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphNot1> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#focusGraph> _:autos512],
+                                                <https://w3id.org/shacl-ds#sourceShapesGraph> <http://example.org/shapeGraphNot1> ; 
+                                                <https://w3id.org/shacl-ds#focusGraph> _:autos512],
                                                [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
                                                 <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
                                                 <http://www.w3.org/ns/shacl#focusNode> <http://example.org/Bob> ; 
@@ -22,5 +22,5 @@ _:autos574 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                 <http://www.w3.org/ns/shacl#resultMessage> "There should be at least 1 value(s)." ; 
                                                 <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#MinCountConstraintComponent> ; 
                                                 <http://www.w3.org/ns/shacl#resultPath> <http://xmlns.com/foaf/0.1/knows> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphNot1> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#focusGraph> _:autos512].
+                                                <https://w3id.org/shacl-ds#sourceShapesGraph> <http://example.org/shapeGraphNot1> ; 
+                                                <https://w3id.org/shacl-ds#focusGraph> _:autos512].

@@ -1,5 +1,5 @@
-@prefix ex: <http://example.org/> .
-@prefix shds: <http://www.w3.org/ns/shacl-dataset#>.
+﻿@prefix ex: <http://example.org/> .
+@prefix shds: <https://w3id.org/shacl-ds#>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -25,7 +25,7 @@ ex: sh:declare [
 
     sh:declare [
 		sh:prefix "shds" ;
-		sh:namespace "http://www.w3.org/ns/shacl-dataset#"^^xsd:anyURI ;
+		sh:namespace "https://w3id.org/shacl-ds#"^^xsd:anyURI ;
 	] ;
 .
 

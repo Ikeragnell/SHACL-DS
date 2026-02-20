@@ -1,4 +1,4 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+﻿@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
@@ -11,8 +11,8 @@ _:autos434 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                 <http://www.w3.org/ns/shacl#resultMessage> "There should be at least 1 value(s)." ; 
                                                 <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#MinCountConstraintComponent> ; 
                                                 <http://www.w3.org/ns/shacl#resultPath> <http://xmlns.com/foaf/0.1/knows> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphTargetDefault> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://www.w3.org/ns/shacl-dataset#default>],
+                                                <https://w3id.org/shacl-ds#sourceShapesGraph> <http://example.org/shapeGraphTargetDefault> ; 
+                                                <https://w3id.org/shacl-ds#focusGraph> <https://w3id.org/shacl-ds#default>],
                                                [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
                                                 <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
                                                 <http://www.w3.org/ns/shacl#focusNode> <http://example.org/Grace> ; 
@@ -20,8 +20,8 @@ _:autos434 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                 <http://www.w3.org/ns/shacl#resultMessage> "There should be at least 1 value(s)." ; 
                                                 <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#MinCountConstraintComponent> ; 
                                                 <http://www.w3.org/ns/shacl#resultPath> <http://xmlns.com/foaf/0.1/knows> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphTarget2and3> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://example.org/dataGraph3>],
+                                                <https://w3id.org/shacl-ds#sourceShapesGraph> <http://example.org/shapeGraphTarget2and3> ; 
+                                                <https://w3id.org/shacl-ds#focusGraph> <http://example.org/dataGraph3>],
                                                [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
                                                 <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
                                                 <http://www.w3.org/ns/shacl#focusNode> <http://example.org/Grace> ; 
@@ -29,5 +29,5 @@ _:autos434 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                 <http://www.w3.org/ns/shacl#resultMessage> "There should be at least 1 value(s)." ; 
                                                 <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#MinCountConstraintComponent> ; 
                                                 <http://www.w3.org/ns/shacl#resultPath> <http://xmlns.com/foaf/0.1/knows> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphTarget3> ; 
-                                                <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://example.org/dataGraph3>].
+                                                <https://w3id.org/shacl-ds#sourceShapesGraph> <http://example.org/shapeGraphTarget3> ; 
+                                                <https://w3id.org/shacl-ds#focusGraph> <http://example.org/dataGraph3>].

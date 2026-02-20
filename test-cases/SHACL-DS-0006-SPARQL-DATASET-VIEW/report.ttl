@@ -1,4 +1,4 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+﻿@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
@@ -11,8 +11,8 @@ _:autos1038 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                  <http://www.w3.org/ns/shacl#sourceShape> <http://example.org/knowsGoodPersonShape> ; 
                                                  <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#SPARQLConstraintComponent> ; 
                                                  <http://www.w3.org/ns/shacl#sourceConstraint> _:autos984 ; 
-                                                 <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphSPARQL> ; 
-                                                 <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://www.w3.org/ns/shacl-dataset#default>],
+                                                 <https://w3id.org/shacl-ds#sourceShapesGraph> <http://example.org/shapeGraphSPARQL> ; 
+                                                 <https://w3id.org/shacl-ds#focusGraph> <https://w3id.org/shacl-ds#default>],
                                                 [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
                                                  <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
                                                  <http://www.w3.org/ns/shacl#focusNode> <http://example.org/David> ; 
@@ -20,8 +20,8 @@ _:autos1038 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                  <http://www.w3.org/ns/shacl#sourceShape> <http://example.org/knowsGoodPersonShape> ; 
                                                  <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#SPARQLConstraintComponent> ; 
                                                  <http://www.w3.org/ns/shacl#sourceConstraint> _:autos984 ; 
-                                                 <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphSPARQL> ; 
-                                                 <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://example.org/dataGraph1>],
+                                                 <https://w3id.org/shacl-ds#sourceShapesGraph> <http://example.org/shapeGraphSPARQL> ; 
+                                                 <https://w3id.org/shacl-ds#focusGraph> <http://example.org/dataGraph1>],
                                                 [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
                                                  <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
                                                  <http://www.w3.org/ns/shacl#focusNode> <http://example.org/Bob> ; 
@@ -29,8 +29,8 @@ _:autos1038 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                  <http://www.w3.org/ns/shacl#sourceShape> <http://example.org/knowsGoodPersonShape> ; 
                                                  <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#SPARQLConstraintComponent> ; 
                                                  <http://www.w3.org/ns/shacl#sourceConstraint> _:autos984 ; 
-                                                 <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphSPARQL> ; 
-                                                 <http://www.w3.org/ns/shacl-dataset#focusGraph> <http://example.org/dataGraph3>],
+                                                 <https://w3id.org/shacl-ds#sourceShapesGraph> <http://example.org/shapeGraphSPARQL> ; 
+                                                 <https://w3id.org/shacl-ds#focusGraph> <http://example.org/dataGraph3>],
                                                 [a <http://www.w3.org/ns/shacl#ValidationResult> ; 
                                                  <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> ; 
                                                  <http://www.w3.org/ns/shacl#focusNode> <http://example.org/Bob> ; 
@@ -38,6 +38,6 @@ _:autos1038 a <http://www.w3.org/ns/shacl#ValidationReport>;
                                                  <http://www.w3.org/ns/shacl#sourceShape> <http://example.org/knowsGoodPersonShape> ; 
                                                  <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#SPARQLConstraintComponent> ; 
                                                  <http://www.w3.org/ns/shacl#sourceConstraint> _:autos984 ; 
-                                                 <http://www.w3.org/ns/shacl-dataset#sourceShapesGraph> <http://example.org/shapeGraphSPARQL> ; 
-                                                 <http://www.w3.org/ns/shacl-dataset#focusGraph> [<http://www.w3.org/ns/shacl-dataset#or> (<http://example.org/dataGraph2>
+                                                 <https://w3id.org/shacl-ds#sourceShapesGraph> <http://example.org/shapeGraphSPARQL> ; 
+                                                 <https://w3id.org/shacl-ds#focusGraph> [<https://w3id.org/shacl-ds#or> (<http://example.org/dataGraph2>
                                                                                                                                            <http://example.org/dataGraph3>)]].

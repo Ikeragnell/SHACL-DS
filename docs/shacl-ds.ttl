@@ -1,0 +1,152 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix shds: <https://w3id.org/shacl-ds#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+# ===========================================================================
+# Ontology Declaration
+# ===========================================================================
+
+<https://w3id.org/shacl-ds>
+    a owl:Ontology ;
+    rdfs:label "SHACL-DS"@en ;
+    rdfs:comment "SHACL Extension for Datasets (SHACL-DS): introduces dataset-level targeting, graph combinations, and extended validation reporting for RDF datasets."@en ;
+    dcterms:title "SHACL-DS Vocabulary"@en ;
+    dcterms:description "SHACL-DS extends SHACL to enable native validation of RDF datasets. It provides mechanisms for selecting target graphs, combining graphs with set operations, reporting dataset-level validation results, and formalizes the execution of SPARQL-based constraints over RDF datasets through a dataset view transformation."@en ;
+    dcterms:creator [
+        a foaf:Person ;
+        foaf:name "CHIEM DAO, Davan" ;
+        foaf:mbox <mailto:davan.chiemdao@uliege.be> ;
+        foaf:organization "University of Liège"
+    ] ;
+    dcterms:license <https://opensource.org/licenses/MIT> ;
+    dcterms:created "2025-01-01"^^xsd:date ;
+    dcterms:modified "2026-02-20"^^xsd:date ;
+    vann:preferredNamespacePrefix "shds" ;
+    vann:preferredNamespaceUri "https://w3id.org/shacl-ds#" ;
+    owl:versionInfo "0.1.0" .
+
+
+# ===========================================================================
+# Target Graph Declaration Predicates
+# ===========================================================================
+
+shds:targetGraph
+    a rdf:Property ;
+    rdfs:label "target graph"@en ;
+    rdfs:comment "Declares that a shapes graph targets a specific graph (or a predefined set of graphs) in the data dataset. The object is either a named graph IRI or one of the predefined IRIs shds:all, shds:named, or shds:default."@en ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range rdfs:Resource ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+shds:targetGraphExclude
+    a rdf:Property ;
+    rdfs:label "target graph exclude"@en ;
+    rdfs:comment "Excludes a specific graph IRI (or a predefined set) from the set of target graphs after inclusion. Applied after shds:targetGraph and shds:targetGraphPattern."@en ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range rdfs:Resource ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+shds:targetGraphPattern
+    a rdf:Property ;
+    rdfs:label "target graph pattern"@en ;
+    rdfs:comment "Declares that a shapes graph targets all graphs whose IRI matches the given regular expression string (XQuery 1.0 / XPath 2.0 syntax)."@en ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+shds:targetGraphExcludePattern
+    a rdf:Property ;
+    rdfs:label "target graph exclude pattern"@en ;
+    rdfs:comment "Excludes all graphs whose IRI matches the given regular expression string from the set of target graphs. Applied after inclusion."@en ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range xsd:string ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+
+# ===========================================================================
+# Target Graph Combination
+# ===========================================================================
+
+shds:targetGraphCombination
+    a rdf:Property ;
+    rdfs:label "target graph combination"@en ;
+    rdfs:comment "Declares that a shapes graph targets a virtual graph constructed by combining multiple data graphs using set operators (shds:or, shds:and, shds:minus)."@en ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range rdfs:Resource ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+shds:or
+    a rdf:Property ;
+    rdfs:label "or (graph union)"@en ;
+    rdfs:comment "Set union operator for graph combinations. Accepts an RDF list of graph IRIs or nested combination nodes. The resulting graph contains all triples from all operand graphs."@en ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range rdf:List ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+shds:and
+    a rdf:Property ;
+    rdfs:label "and (graph intersection)"@en ;
+    rdfs:comment "Set intersection operator for graph combinations. Accepts an RDF list of graph IRIs or nested combination nodes. The resulting graph contains only triples present in all operand graphs."@en ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range rdf:List ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+shds:minus
+    a rdf:Property ;
+    rdfs:label "minus (graph difference)"@en ;
+    rdfs:comment "Set difference operator for graph combinations. Accepts an RDF list of exactly two elements: the minuend and the subtrahend. The resulting graph contains triples in the first operand that are not in the second."@en ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range rdf:List ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+
+# ===========================================================================
+# Validation Report Extension Predicates
+# ===========================================================================
+
+shds:sourceShapesGraph
+    a rdf:Property ;
+    rdfs:label "source shapes graph"@en ;
+    rdfs:comment "In a validation result, identifies the named shapes graph within the Shapes Dataset that contained the shape responsible for the result."@en ;
+    rdfs:domain sh:ValidationResult ;
+    rdfs:range rdfs:Resource ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+shds:focusGraph
+    a rdf:Property ;
+    rdfs:label "focus graph"@en ;
+    rdfs:comment "In a validation result, identifies the data graph (or graph combination) from the Data Dataset where the focus node was found."@en ;
+    rdfs:domain sh:ValidationResult ;
+    rdfs:range rdfs:Resource ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+
+# ===========================================================================
+# Predefined Graph Selector IRIs
+# ===========================================================================
+
+shds:all
+    a rdfs:Resource ;
+    rdfs:label "all graphs"@en ;
+    rdfs:comment "Predefined IRI that refers to all graphs in the data dataset, including both the default graph and all named graphs."@en ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+shds:named
+    a rdfs:Resource ;
+    rdfs:label "named graphs"@en ;
+    rdfs:comment "Predefined IRI that refers to all named graphs in the data dataset, excluding the default graph."@en ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+shds:default
+    a rdfs:Resource ;
+    rdfs:label "default graph"@en ;
+    rdfs:comment "Predefined IRI with two roles: (1) as a target graph selector, it refers to the default graph of the data dataset; (2) inside SPARQL queries executed under the dataset view transformation, it is the named graph IRI under which the original default graph is stored, so that the focus graph can replace the default graph position."@en ;
+    rdfs:isDefinedBy <https://w3id.org/shacl-ds> .
+
+

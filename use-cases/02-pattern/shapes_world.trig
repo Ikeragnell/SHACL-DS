@@ -1,6 +1,6 @@
-@prefix ex:   <http://example.org/> .
+﻿@prefix ex:   <http://example.org/> .
 @prefix sh:   <http://www.w3.org/ns/shacl#> .
-@prefix shds: <http://www.w3.org/ns/shacl-dataset#> .
+@prefix shds: <https://w3id.org/shacl-ds#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 ex:shapes_users {

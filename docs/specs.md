@@ -1,4 +1,4 @@
-# SHACL-DS Specification (DRAFT)
+﻿# SHACL-DS Specification (DRAFT)
 
 ## Overview
 
@@ -16,7 +16,7 @@ This specification uses the following prefix bindings throughout:
 | Prefix | Namespace |
 |--------|-----------|
 | `sh`   | `http://www.w3.org/ns/shacl#` |
-| `shds` | `http://www.w3.org/ns/shacl-dataset#` |
+| `shds` | `https://w3id.org/shacl-ds#` |
 | `foaf` | `http://xmlns.com/foaf/0.1/` |
 | `ex`   | `http://example.org/` |
 
@@ -198,7 +198,7 @@ The following example demonstrates SHACL-DS validation over a dataset with two n
 
 ```trig
 @prefix ex: <http://example.org/> .
-@prefix shds: <http://www.w3.org/ns/shacl-dataset#>.
+@prefix shds: <https://w3id.org/shacl-ds#>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
@@ -222,7 +222,7 @@ ex:dataGraph2 {
 ##### Shapes Dataset
 ```trig
 @prefix ex: <http://example.org/> .
-@prefix shds: <http://www.w3.org/ns/shacl-dataset#>.
+@prefix shds: <https://w3id.org/shacl-ds#>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
@@ -255,7 +255,7 @@ ex:shapeGraphSingleTarget2 {
 ```turtle
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix shds: <http://www.w3.org/ns/shacl-dataset#> .
+@prefix shds: <https://w3id.org/shacl-ds#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex: <http://example.org/> .
 
