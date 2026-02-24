@@ -1,4 +1,4 @@
-﻿@prefix ex: <http://example.org/> .
+﻿@prefix shdsshds: <https://w3id.org/shacl-ds/shacl-ds#> .
 @prefix shds: <https://w3id.org/shacl-ds#>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
@@ -6,36 +6,36 @@
 
 @prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
 
-ex:shapesGraphShape shds:targetGraph shds:all.
+shdsshds:shapesGraphShape shds:targetGraph shds:all.
 
-ex:shapesGraphShape {
+shdsshds:shapesGraphShape {
 
-    ex:targetGraphObjectIRIShape
+    shdsshds:targetGraphObjectIRIShape
         a sh:NodeShape;
         sh:targetObjectsOf shds:targetGraph;
         sh:nodeKind sh:IRI;
         sh:severity sh:Warning;
     .
 
-    ex:targetGraphCombinationDeclarationShape
+    shdsshds:targetGraphCombinationDeclarationShape
         a sh:NodeShape ;
         sh:targetObjectsOf shds:targetGraphCombination ;
         sh:property [
             sh:path [
                 sh:zeroOrMorePath ( [sh:alternativePath (shds:or shds:and shds:minus)] [ sh:zeroOrMorePath rdf:rest ] rdf:first );
             ] ;
-            sh:node ex:targetGraphCombinationShape;
+            sh:node shdsshds:targetGraphCombinationShape;
         ] ;
     .
 
-    ex:oneCombinationOperatorShape
+    shdsshds:oneCombinationOperatorShape
         a sh:PropertyShape;
         sh:path [sh:alternativePath (shds:or shds:and shds:minus)];
         sh:minCount 1 ;
         sh:maxCount 1 ;
     .
 
-    ex:targetGraphCombinationShape
+    shdsshds:targetGraphCombinationShape
         a sh:NodeShape ;
         sh:or (
             [sh:nodeKind sh:IRI]
@@ -61,7 +61,7 @@ ex:shapesGraphShape {
 
         sh:property [
             sh:path shds:minus;
-            sh:node ex:ListWithExactly2Members;
+            sh:node shdsshds:ListWithshdsshdsactly2Members;
         ];
 
         sh:not [
@@ -79,7 +79,7 @@ ex:shapesGraphShape {
     .
 
 
-    ex:ListWithExactly2Members
+    shdsshds:ListWithshdsshdsactly2Members
         a sh:NodeShape ;
         sh:node shsh:ListShape ;
         sh:property [
@@ -91,7 +91,7 @@ ex:shapesGraphShape {
     shsh:ListShape
         a sh:NodeShape ;
         rdfs:label "List shape"@en ;
-        rdfs:comment "A shape describing well-formed RDF lists. Currently does not check for non-recursion. This could be expressed using SHACL-SPARQL."@en ;
+        rdfs:comment "A shape describing well-formed RDF lists. Currently does not check for non-recursion. This could be shdsshdspressed using SHACL-SPARQL."@en ;
         rdfs:seeAlso <https://www.w3.org/TR/shacl/#syntax-rule-SHACL-list> ;
         sh:property [
             sh:path [ sh:zeroOrMorePath rdf:rest ] ;
