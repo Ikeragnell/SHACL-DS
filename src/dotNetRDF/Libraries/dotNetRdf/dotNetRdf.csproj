@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>dotNetRdf</AssemblyName>
+    <AssemblyTitle>dotNetRDF</AssemblyTitle>
+    <RootNamespace>VDS.RDF</RootNamespace>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- NuGet Package Metadata. Additional values are inherited from ../Directory.Build.props -->
+    <PackageId>dotNetRdf</PackageId>
+    <Title>dotNetRDF Meta-package</Title>
+    <Description>This package installs all of the dotNetRDF packages.</Description>
+    <PackageTags>RDF;Semantic;Web;Linked Data;SPARQL;RDF/XML;Turtle;Notation3;JSON-LD;RDFStar</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+	  <IncludeContentInPack>true</IncludeContentInPack>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\dotNetRdf.Client\dotNetRdf.Client.csproj" />
+    <ProjectReference Include="..\dotNetRdf.Core\dotNetRdf.Core.csproj" />
+    <ProjectReference Include="..\dotNetRdf.Data.DataTables\dotNetRdf.Data.DataTables.csproj" />
+    <ProjectReference Include="..\dotNetRdf.Data.Virtuoso\dotNetRdf.Data.Virtuoso.csproj" Condition=" '$(TargetFramework)' == 'net472' " />
+    <ProjectReference Include="..\dotNetRdf.Dynamic\dotNetRdf.Dynamic.csproj" />
+    <ProjectReference Include="..\dotNetRdf.Inferencing\dotNetRdf.Inferencing.csproj" />
+    <ProjectReference Include="..\dotNetRdf.Ontology\dotNetRdf.Ontology.csproj" />
+    <ProjectReference Include="..\dotNetRdf.Query.FullText\dotNetRdf.Query.FullText.csproj" />
+    <ProjectReference Include="..\dotNetRdf.Query.Spin\dotNetRdf.Query.Spin.csproj" />
+    <ProjectReference Include="..\dotNetRdf.Shacl\dotNetRdf.Shacl.csproj" />
+    <ProjectReference Include="..\dotNetRdf.Skos\dotNetRdf.Skos.csproj" />
+    <ProjectReference Include="..\dotNetRdf.Writing.HtmlSchema\dotNetRdf.Writing.HtmlSchema.csproj" />
+    <ProjectReference Include="..\dotNetRdf.Ldf\dotNetRdf.Ldf.csproj" />
+  </ItemGroup>
+
+</Project>

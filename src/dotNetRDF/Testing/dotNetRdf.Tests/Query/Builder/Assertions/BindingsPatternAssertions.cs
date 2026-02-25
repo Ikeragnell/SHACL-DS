@@ -1,0 +1,58 @@
+using System.Collections.Generic;
+using System.Linq;
+using FluentAssertions;
+using FluentAssertions.Execution;
+using FluentAssertions.Primitives;
+using VDS.RDF.Query.Patterns;
+
+namespace VDS.RDF.Query.Builder.Assertions;
+
+public class BindingsPatternAssertions : ReferenceTypeAssertions<BindingsPattern, BindingsPatternAssertions>
+{
+    private AssertionChain _chain;
+
+    public BindingsPatternAssertions(BindingsPattern pattern, AssertionChain chain) : base(pattern, chain)
+    {
+        _chain = chain;
+    }
+
+    public AndConstraint<BindingsPatternAssertions> BeEquivalentTo(BindingsPattern expected)
+    {
+        return Subject.Should()
+            .DeclareVariables(expected.Variables)
+            .And.HasTuples(expected.Tuples.Count())
+            .And.ContainTuples(expected.Tuples);
+    }
+
+    public AndConstraint<BindingsPatternAssertions> DeclareVariables(IEnumerable<string> variables)
+    {
+        Subject.Variables.Should().ContainInOrder(variables);
+
+        return new AndConstraint<BindingsPatternAssertions>(this);
+    }
+
+    public AndConstraint<BindingsPatternAssertions> ContainTuples(IEnumerable<BindingTuple> tuples)
+    {
+        IEnumerable<string> variables = Subject.Variables;
+
+        foreach (BindingTuple tuple in tuples)
+        {
+            //Execute.Assertion
+            _chain
+                .Given(() => Subject.Tuples)
+                .ForCondition(actual => actual.Any(t => variables.All(v => Equals(t[v], tuple[v]))))
+                .FailWith("{0} should contain tuple {1}", Subject, tuple);
+        }
+
+        return new AndConstraint<BindingsPatternAssertions>(this);
+    }
+
+    protected override string Identifier => "BindingsPattern";
+
+    public AndConstraint<BindingsPatternAssertions> HasTuples(int count)
+    {
+        Subject.Tuples.Should().HaveCount(count);
+
+        return new AndConstraint<BindingsPatternAssertions>(this);
+    }
+}

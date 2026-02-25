@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>dotNetRdf.Query.FullText</AssemblyName>
+    <AssemblyTitle>dotNetRDF Full Text Query Support</AssemblyTitle>
+    <RootNamespace>VDS.RDF.Query</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- NuGet Package Metadata. Additional values are inherited from ../Directory.Build.props -->
+    <PackageId>dotNetRdf.Query.FullText</PackageId>
+    <Title>dotNetRDF Full Text Query Support</Title>
+    <Description>Provides Full Text SPARQL support as a plugin for the dotNetRDF Leviathan SPARQL Engine using Lucene.Net</Description>
+    <PackageTags>RDF;Semantic;Web;SPARQL;Query;Full;Text;Lucene</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="FullText.ttl" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\dotNetRdf.Core\dotNetRdf.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lucene.Net" />
+    <PackageReference Include="Lucene.Net.QueryParser" />
+    <PackageReference Include="SharpZipLib" />
+    <PackageReference Include="StyleCop.Analyzers" >
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

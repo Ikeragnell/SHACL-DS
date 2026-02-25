@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>VDS.RDF</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<PackageReference Include="xunit.v3.extensibility.core" />
+	<PackageReference Include="xunit.v3.assert" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\dotNetRdf.Core\dotNetRdf.Core.csproj" />
+  </ItemGroup>
+
+</Project>

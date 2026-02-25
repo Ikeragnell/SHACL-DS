@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>dotNetRdf.Dynamic</AssemblyName>
+    <AssemblyTitle>dotNetRDF Dynamic API</AssemblyTitle>
+    <RootNamespace>VDS.RDF.Dynamic</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- NuGet Package Metadata. Additional values are inherited from ../Directory.Build.props -->
+    <PackageId>dotNetRdf.Dynamic</PackageId>
+    <Title>dotNetRDF Dynamic Objects API</Title>
+    <Description>Provides an API for manipulating RDF graphs using .NET dynamic objects.</Description>
+    <PackageTags>RDF;dynamic;objects</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleToSuffix Include=".Tests"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\dotNetRdf.Core\dotNetRdf.Core.csproj" />
+  </ItemGroup>
+
+</Project>

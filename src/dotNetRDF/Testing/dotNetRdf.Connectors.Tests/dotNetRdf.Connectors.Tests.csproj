@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyTitle>dotNetRdf.Connectors.Tests</AssemblyTitle>
+    <AssemblyName>dotNetRdf.Connectors.Tests</AssemblyName>
+    <RootNamespace>VDS.RDF.Storage</RootNamespace>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="*.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="WireMock.Net" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+ </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\dotNetRdf.Core\dotNetRdf.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="resources\**\*.*;resources\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="resources\rdfserver\southampton.rdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

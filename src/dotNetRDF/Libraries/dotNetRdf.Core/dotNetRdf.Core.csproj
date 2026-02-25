@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>dotNetRdf</AssemblyName>
+    <AssemblyTitle>dotNetRDF</AssemblyTitle>
+    <RootNamespace>VDS.RDF</RootNamespace>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- NuGet Package Metadata. Additional values are inherited from ../Directory.Build.props -->
+    <PackageId>dotNetRdf.Core</PackageId>
+    <Title>dotNetRDF Core Library</Title>
+    <Description>dotNetRDF is an RDF, SPARQL and Linked Datat API for .Net.  It provides simple but powerfully extensible APIs for this and integrates with a variety of popular triple stores.</Description>
+    <PackageTags>RDF;Semantic;Web;Linked Data;SPARQL;RDF/XML;Turtle;Notation3;JSON-LD;RDFStar</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="dotNetRdf.Test, PublicKey=0024000004800000940000000602000000240000525341310004000001000100d9118ebaf78c95309b80c81fe948290c8bd462fca5fc60d4f1a291bc32406feac610f9955f9bdb535f0a4b0609b06805f51b20a36703443546528f0fa27c1b63dce6133dec56f63d950ccfa059d7fe02270ee293da1a95228a15c414a89143962a03e3f48c1a42eaa09254403a1edd764980bc55bab37cf8908f1faadf4ae1b9" />
+    <InternalsVisibleTo Include="dotNetRdf.Query.Pull, PublicKey=0024000004800000940000000602000000240000525341310004000001000100d9118ebaf78c95309b80c81fe948290c8bd462fca5fc60d4f1a291bc32406feac610f9955f9bdb535f0a4b0609b06805f51b20a36703443546528f0fa27c1b63dce6133dec56f63d950ccfa059d7fe02270ee293da1a95228a15c414a89143962a03e3f48c1a42eaa09254403a1edd764980bc55bab37cf8908f1faadf4ae1b9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="Configuration\configuration.ttl" />
+    <EmbeddedResource Include="Query\Expressions\LeviathanFunctionLibrary.ttl" />
+    <EmbeddedResource Include="Query\Optimisation\OptimiserStats.ttl" />
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+    
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="HtmlAgilityPack" />
+    <PackageReference Include="VDS.Common" />
+    <PackageReference Include="StyleCop.Analyzers">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" />
+    <PackageReference Include="System.ComponentModel.TypeConverter" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" />
+    <PackageReference Include="System.Globalization.Extensions" />
+    <PackageReference Include="System.Net.Http" />
+    <PackageReference Include="System.Reflection.TypeExtensions" />
+    <PackageReference Include="System.Threading.Thread" />
+    <PackageReference Include="System.Collections.Specialized" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**\*.cs" Exclude="obj\**\*.cs;**\*.NetCore.cs;Compatibility\Core\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\**" />
+  </ItemGroup>
+
+</Project>

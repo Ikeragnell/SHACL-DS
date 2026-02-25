@@ -1,0 +1,93 @@
+name: Unit Tests
+on: [push, pull_request]
+
+env:
+  VSTEST_CONNECTION_TIMEOUT: 180
+
+jobs:
+  test:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        framework: ["net10.0"]
+        suite: 
+          - "dotNetRdf.Tests"
+          - "dotNetRdf.Dynamic.Tests"
+          - "dotNetRdf.Inferencing.Tests"
+          - "dotNetRdf.Ontology.Tests"
+          - "dotNetRdf.Shacl.Tests"
+          - "dotNetRdf.Skos.Tests"
+          - "dotNetRdf.Query.FullText.Tests"
+          - "dotNetRdf.Writing.HtmlSchema.Tests"
+          - "dotNetRdf.TestSuite.RdfStar"
+          - "dotNetRdf.TestSuite.Rdfa"
+          - "dotNetRdf.TestSuite.RdfCanon"
+          - "dotNetRdf.TestSuite.W3C"
+          - "dotNetRdf.Data.DataTables.Tests"
+          - "dotNetRdf.Ldf.Tests"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+        submodules: 'true'
+    - name: Run Tests
+      run: dotnet test -c Release --filter "Category!=explicit&Category!=performance" --framework ${{ matrix.framework }} Testing/${{matrix.suite}}
+    
+  test-linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        framework: ["net10.0"]
+        suite: 
+          - "dotNetRdf.Tests"
+          - "dotNetRdf.Dynamic.Tests"
+          - "dotNetRdf.Inferencing.Tests"
+          - "dotNetRdf.Ontology.Tests"
+          - "dotNetRdf.Shacl.Tests"
+          - "dotNetRdf.Skos.Tests"
+          - "dotNetRdf.Query.FullText.Tests"
+          - "dotNetRdf.Writing.HtmlSchema.Tests"
+          - "dotNetRdf.TestSuite.RdfStar"
+          - "dotNetRdf.TestSuite.Rdfa"
+          - "dotNetRdf.TestSuite.RdfCanon"
+          - "dotNetRdf.TestSuite.W3C"
+          - "dotNetRdf.Data.DataTables.Tests"
+          - "dotNetRdf.Ldf.Tests"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          submodules: 'true'
+      - name: Run Tests
+        run: dotnet test -c Release --blame --filter "Category!=explicit&Category!=performance" --framework ${{ matrix.framework }} Testing/${{matrix.suite}}
+
+  fusekiTests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+    - name: Start Fuseki
+      run: docker run --rm -d -p 3030:3030 --name fuseki atomgraph/fuseki --mem /ds
+    - name: Test Fuseki Connector
+      run: dotnet test -c Release --framework net10.0 Testing/dotNetRdf.Connectors.Fuseki.Tests/dotNetRdf.Connectors.Fuseki.Tests.csproj
+    - name: Stop Fuseki
+      run: docker stop fuseki
+        
+  allegrographTests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Start Allegrograph
+        run: docker run -d -e AGRAPH_SUPER_USER=test -e AGRAPH_SUPER_PASSWORD=test -p 10000-10035:10000-10035 --shm-size 1g --name agraph --restart=always franzinc/agraph
+      - name: Test Allegrograph Connector
+        run: dotnet test -c Release --framework net10.0 Testing/dotNetRdf.Connectors.Allegrograph.Tests/dotNetRdf.Connectors.Allegrograph.Tests.csproj
+      - name: Stop Allegrograph
+        run: docker stop agraph
+

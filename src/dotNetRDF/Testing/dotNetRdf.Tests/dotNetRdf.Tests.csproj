@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyTitle>dotNetRdf.Test</AssemblyTitle>
+    <AssemblyName>dotNetRdf.Test</AssemblyName>
+    <RootNamespace>VDS.RDF</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Writing\HtmlWriterTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\dotNetRdf.Core\dotNetRdf.Core.csproj" />
+    <ProjectReference Include="..\dotNetRdf.TestSupport\dotNetRdf.TestSupport.csproj" />
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="WireMock.Net" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Configuration.ConfigurationManager" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Query\SampleWeightings.n3;embedded.ttl" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <None Update="resources\**\*.*;resources\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="resources\sparql-update\insert-using-named\output.trig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\UnitTestConfig.properties">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="..\xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
