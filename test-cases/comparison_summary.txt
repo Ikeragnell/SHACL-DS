@@ -1,0 +1,15 @@
+SHACL-DS Test Comparison Report
+Generated: 2026-02-25T08:12:57.818413
+================================================================================
+SHACL-DS Validation Report Comparison Summary
+================================================================================
+Total tests:    16
+Passed:         14 ✅
+Failed:         2 ❌
+Errors:         0 ⚠️
+Success rate:   87.5%
+================================================================================
+
+Failed tests (different validation results):
+  - SHACL-DS-0006-SPARQL-DATASET-VIEW: 4 vs 8 results
+  - SHACL-DS-0007-SPARQL-SELECT: 2 vs 2 results
