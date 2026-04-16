@@ -42,9 +42,9 @@ ex:knowsGoodPersonShape
 					foaf:knows ?someone .
 				FILTER NOT EXISTS {
 					GRAPH shds:default {
-						?someone a foaf:Person .
+						?goodPerson a foaf:Person .
 					}
-					$this foaf:knows ?someone .
+					$this foaf:knows ?goodPerson .
 				}
 			}
 			""" ;

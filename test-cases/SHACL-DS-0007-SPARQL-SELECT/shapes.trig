@@ -86,10 +86,10 @@ ex:knowsGoodPersonComponent
 		a sh:SPARQLSelectValidator  ;
 		sh:prefixes ex:;
 		sh:select """
-			SELECT DISTINCT $this
+			SELECT DISTINCT $this $value
 			WHERE {
 				$this a foaf:Person.
-				$this $PATH ?someone .
+				$this $PATH $value .
 
 				FILTER NOT EXISTS {
 					GRAPH $goodPersonGraphName {
